@@ -1,5 +1,7 @@
 package com.capgemini.wsb.fitnesstracker.user.api;
 
+import org.springframework.boot.autoconfigure.task.TaskExecutionProperties;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -29,5 +31,12 @@ public interface UserProvider {
      * @return An {@link Optional} containing the all users,
      */
     List<User> findAllUsers();
+
+    /**
+     * Retrieves all users only by their names and surnames.
+     *
+     * @return An {@link Optional} containing the basic information of all users,
+     */
+    List<SimpleUser> findAllSimpleUsers();
 
 }
