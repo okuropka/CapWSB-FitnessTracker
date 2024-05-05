@@ -20,7 +20,7 @@ class TrainingController {
     public List<TrainingDto> getAllTrainings() {
         return trainingService.findAllTrainings()
                 .stream()
-                .map(simpleTrainingMapper::toDto)
+                .map(trainingMapper::toDto)
                 .toList();
     }
 

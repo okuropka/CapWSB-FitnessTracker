@@ -6,6 +6,7 @@ import com.capgemini.wsb.fitnesstracker.user.api.User;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Interface (API) for modifying operations on {@link Training} entities through the API.
@@ -14,6 +15,8 @@ import java.util.List;
 public interface TrainingService {
 
     Training createTraining(User user, Date startTime, Date endTime, ActivityType activityType, double distance, double averageSpeed);
+
+    Optional<Training> getTraining(long trainingId);
 
     List<Training> getAllTrainingsForDedicatedUser(long userId);
 }
