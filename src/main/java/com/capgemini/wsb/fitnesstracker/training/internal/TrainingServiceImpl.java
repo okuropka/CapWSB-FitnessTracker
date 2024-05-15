@@ -22,29 +22,24 @@ class TrainingServiceImpl implements TrainingService, TrainingProvider {
     private final TrainingRepository trainingRepository;
 
     @Override
-    public Optional<Training> getTraining(final Long trainingId){
+    public Optional<Training> getTraining(final long trainingId) {
         return trainingRepository.findById(trainingId);
-    }
-    @Override
-    public Optional<Training> getTraining(long trainingId) {
-        return Optional.empty();
     }
 
     @Override
     public List<Training> getAllTrainings(){
         return trainingProvider.getAllTrainings();
-
     }
 
+    // TODO: implement query
     @Override
     public List<Training> getAllTrainingsForDedicatedUser(long userId) {
-        return trainingRepository;
+        return trainingRepository.findAllTrainingsByUserID();
     }
 
     @Override
     public Training createTraining(User user, Date startTime, Date endTime, ActivityType activityType, double distance, double averageSpeed){
-        Training out = new Training(user, startTime, endTime, activityType, distance, averageSpeed);
-        return trainingRepository.save(out);
+        return trainingRepository.save(new Training(user, startTime, endTime, activityType, distance, averageSpeed));
     }
 
 }

@@ -25,4 +25,20 @@ public class TrainingDto {
     private double distance;
 
     private double averageSpeed;
+
+    public TrainingDto(
+            final User user,
+            final Date startTime,
+            final Date endTime,
+            final ActivityType activityType,
+            final double distance,
+            final double averageSpeed) {
+        this.user = user;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.activityType = activityType;
+        this.distance = distance;
+        this.averageSpeed = averageSpeed;
+    }
+
 }

@@ -18,7 +18,7 @@ class TrainingController {
 
     @GetMapping
     public List<TrainingDto> getAllTrainings() {
-        return trainingService.findAllTrainings()
+        return trainingService.getAllTrainings()
                 .stream()
                 .map(trainingMapper::toDto)
                 .toList();
@@ -26,11 +26,12 @@ class TrainingController {
 
     @GetMapping("/{userId}")
     public List<TrainingDto> getTrainingsByUserId(@PathVariable long userId) {
-        return trainingService.getAllTrainingsforDedicatedUser(userId).stream().map(trainingMapper::toDto).toList();
+        return trainingService.getAllTrainingsForDedicatedUser(userId).stream().map(trainingMapper::toDto).toList();
     }
 
     @PostMapping
     public TrainingDto addTraining(@RequestBody TrainingDto trainingDto) {
+        return null;
 
     }
 

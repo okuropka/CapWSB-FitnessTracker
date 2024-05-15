@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.task.TaskExecutionProperties;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -55,6 +56,22 @@ class UserServiceImpl implements UserService, UserProvider {
     public List<SimpleUser> findAllSimpleUsers() {
         List<User> temp = findAllUsers();
         return temp.stream().map(user -> new SimpleUser(user.getFirstName(), user.getLastName())).collect(Collectors.toList());
+    }
+    @Override
+    public List<User> findUserByEmailFragment(String emailFragment) {
+        return userRepository.findEmailUserByEmailFragment(emailFragment);
+    }
+
+    @Override
+    public List<User> findUsersOlderThan(int age) {
+        LocalDate maxBirthdate = LocalDate.now().minusYears(age);
+        return userRepository.findUsersOlderThan(maxBirthdate);
+    }
+
+    @Override
+    public User updateUser(User user){
+        log.info("Updating User {}", user);
+        return userRepository.save(user);
     }
 
 }
