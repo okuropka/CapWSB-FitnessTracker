@@ -31,7 +31,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * @return
      */
     @Query("select user from User user where lower(user.email) like lower(concat('%', :emailFragment, '%'))")
-    List<User> findEmailUserByEmailFragment(@Param(("emailFragment")) String emailFragment);
+    List<User> findEmailUserByEmailFragment(@Param("emailFragment") String emailFragment);
 
     @Query("select user from User user where user.birthdate < :earliestBirthdate")
     List<User> findUsersOlderThan(@Param("earliestBirthdate") LocalDate earliestBirthdate);

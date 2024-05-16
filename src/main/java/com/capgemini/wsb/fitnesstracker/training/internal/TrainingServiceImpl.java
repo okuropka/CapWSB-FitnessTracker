@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Date;
 import java.util.Optional;
@@ -31,15 +32,33 @@ class TrainingServiceImpl implements TrainingService, TrainingProvider {
         return trainingProvider.getAllTrainings();
     }
 
-    // TODO: implement query
     @Override
     public List<Training> getAllTrainingsForDedicatedUser(long userId) {
-        return trainingRepository.findAllTrainingsByUserID();
+        return trainingRepository.findAllTrainingsByUserID(userId);
     }
 
     @Override
-    public Training createTraining(User user, Date startTime, Date endTime, ActivityType activityType, double distance, double averageSpeed){
-        return trainingRepository.save(new Training(user, startTime, endTime, activityType, distance, averageSpeed));
+    public Training createTraining(Training training){
+        log.info("Creating Training {}", training);
+        if (training.getId() != null) {
+            throw new IllegalArgumentException("Training has already DB ID, update is not permitted!");
+        }
+        return trainingRepository.save(training);
     }
 
+    @Override
+    public List<Training> findAllFinishedTrainings(){
+        LocalDate today = LocalDate.now();
+        return trainingRepository.findAllFinishedTrainings(today);
+    }
+
+    @Override
+    public List<Training> findAllFinishedTrainingsBefore(LocalDate date){
+        return trainingRepository.findAllFinishedTrainings(date);
+    }
+
+    @Override
+    public List<Training> findALlTrainingsByActivity(ActivityType activityType){
+        return trainingRepository.findAllTrainingsByActivity(activityType);
+    }
 }

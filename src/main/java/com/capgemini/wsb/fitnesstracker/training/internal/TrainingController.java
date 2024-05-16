@@ -5,6 +5,7 @@ import com.capgemini.wsb.fitnesstracker.training.internal.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -30,9 +31,22 @@ class TrainingController {
     }
 
     @PostMapping
-    public TrainingDto addTraining(@RequestBody TrainingDto trainingDto) {
-        return null;
-
+    public Training addTraining(@RequestBody TrainingDto trainingDto) {
+        return trainingService.createTraining(trainingMapper.toEntity(trainingDto));
     }
 
+    @GetMapping("/finished_trainings")
+    public List<TrainingDto> getFinishedTrainings() {
+        return trainingService.findAllFinishedTrainings().stream().map(trainingMapper::toDto).toList();
+    }
+
+    @GetMapping("/finished_trainings/{date}")
+    public List<TrainingDto> getFinishedTrainingsBefore(@PathVariable LocalDate date) {
+        return trainingService.findAllFinishedTrainingsBefore(date).stream().map(trainingMapper::toDto).toList();
+    }
+
+    @GetMapping("/{activity}")
+    public List<TrainingDto> getTrainingsByActivity(@PathVariable ActivityType activity) {
+        return trainingService.findALlTrainingsByActivity(activity).stream().map(trainingMapper::toDto).toList();
+    }
 }

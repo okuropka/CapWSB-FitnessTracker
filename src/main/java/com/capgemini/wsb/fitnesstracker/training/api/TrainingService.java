@@ -4,6 +4,7 @@ import com.capgemini.wsb.fitnesstracker.training.api.Training;
 import com.capgemini.wsb.fitnesstracker.training.internal.ActivityType;
 import com.capgemini.wsb.fitnesstracker.user.api.User;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -14,9 +15,15 @@ import java.util.Optional;
  */
 public interface TrainingService {
 
-    Training createTraining(User user, Date startTime, Date endTime, ActivityType activityType, double distance, double averageSpeed);
+    Training createTraining(Training training);
 
     Optional<Training> getTraining(long trainingId);
 
     List<Training> getAllTrainingsForDedicatedUser(long userId);
+
+    List<Training> findAllFinishedTrainings();
+
+    List<Training> findAllFinishedTrainingsBefore(LocalDate date);
+
+    List<Training> findALlTrainingsByActivity(ActivityType activityType);
 }
