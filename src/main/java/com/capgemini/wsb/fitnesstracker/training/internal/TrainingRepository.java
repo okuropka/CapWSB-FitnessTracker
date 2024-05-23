@@ -40,10 +40,10 @@ interface TrainingRepository extends JpaRepository<Training, Long> {
     /**
      * Query searching all trainings by activity type
      *
-     * @param activityType Type of activity
+     * @param activity Type of activity
      * @return {@link List} containing found trainings
      */
-    @Query("select training from Training training where training.activityType = :activityType")
-    List<Training> findAllTrainingsByActivity(@Param("activityType") ActivityType activityType);
+    @Query("select training from Training training where training.activityType = :activity")
+    List<Training> findAllTrainingsByActivity(@Param("activity") ActivityType activity);
 
 }

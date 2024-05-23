@@ -57,8 +57,8 @@ class TrainingServiceImpl implements TrainingService, TrainingProvider {
     }
 
     @Override
-    public List<Training> findALlTrainingsByActivity(ActivityType activityType){
-        return trainingRepository.findAllTrainingsByActivity(activityType);
+    public List<Training> findALlTrainingsByActivity(ActivityType activity){
+        return trainingRepository.findAllTrainingsByActivity(activity);
     }
 
     @Override

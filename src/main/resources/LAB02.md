@@ -16,16 +16,16 @@ Jako użytkownik, chce mieć możliwość dostępu do panelu z treningami:
 
 Stworzone API powinno pozwalać na:
 
-- [x] utworzenie nowego treningu
+- [ ] utworzenie nowego treningu
 - [x] wyszukiwanie wszystkich treningów
-- [x] wyszukiwanie treningów dla określonego Użytkownika:
-- [x] wyszukiwanie wszystkich treningów zakończonych (po konkretnej zdefiniowanej dacie)
-- [x] wyszukiwanie wszystkich treningów dla konkretnej aktywności (np. wszystkie treningi biegowe)
-- [x] aktualizacja treningu (dowolnie wybrane pole np. dystans)
+- [x] wyszukiwanie treningów dla określonego Użytkownika
+- [ ] wyszukiwanie wszystkich treningów zakończonych (po konkretnej zdefiniowanej dacie)
+- [ ] wyszukiwanie wszystkich treningów dla konkretnej aktywności (np. wszystkie treningi biegowe)
+- [ ] aktualizacja treningu (dowolnie wybrane pole np. dystans)
 
 ### Wymagania techniczne
 
-- [ ] API sieciowe powinno wykorzystywać protokół HTTP oraz format JSON do transferu danych
+- [x] API sieciowe powinno wykorzystywać protokół HTTP oraz format JSON do transferu danych
 - [ ] w repozytoriach rozwiązanie może wykorzystywać metody dostarczane przez interfejs JpaRepository oraz metody
   domyślne, pobierające dane za pomocą `findAll()` oraz przetwarzające je za pomocą strumieni (`Stream`). Przykład
   znaleźć można w `UserRepository`
@@ -35,7 +35,7 @@ Stworzone API powinno pozwalać na:
 - [ ] kod powinien być odpowiednio udokumentowany za pomocą JavaDoc
 - [ ] do kodu powinna zostać dołączona wyeksportowana kolekcja zapytań z programu Postman, pozwalająca przetestować
   stworzone API
-- [ ] rozwiązanie powinno wykorzystywać zwykłe klasy Javowe do definicji obiektów transferu danych (DTO)
+- [x] rozwiązanie powinno wykorzystywać zwykłe klasy Javowe do definicji obiektów transferu danych (DTO)
 
 ## ZADANIE 2 (opcjonalne). Sieciowe API do operacji typu CRUD na Statistics (bez użycia rekordów)
 

@@ -80,7 +80,7 @@ class UserController {
         return userService.findUsersOlderThan(age).stream().map(userMapper::toDto).toList();
     }
 // TODO: fix error
-    @PatchMapping("/update/user/byEmail/{id}")      // http://localhost:8080/v1/users/update/user/byEmail/3?email=odavis@domain2.com
+    @PatchMapping("/update/byEmail/{id}")      // http://localhost:8080/v1/users/update/byEmail/3?email=odavis@domain2.com
     public void updateUser(@PathVariable Long id, @RequestParam String email ) {
         Optional<User> optionalUser = userService.getUser(id);
         if (optionalUser.isPresent()) {
