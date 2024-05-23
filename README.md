@@ -1,6 +1,6 @@
 intelliJ na VDI, wtyczka lombok:
 
-Go to File > Settings > Plugins
-Click on Browse repositories...
-Search for Lombok Plugin
-Click on Install plugin
+1. Go to File > Settings > Plugins
+2. Click on Browse repositories...
+3. Search for Lombok Plugin
+4. Click on Install plugin

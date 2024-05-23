@@ -28,7 +28,7 @@ class TrainingController {
                 .toList();
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/ofUser/{userId}")
     public List<TrainingDto> getTrainingsByUserId(@PathVariable long userId) {
         return trainingService.getAllTrainingsForDedicatedUser(userId).stream().map(trainingMapper::toDto).toList();
     }
@@ -38,17 +38,17 @@ class TrainingController {
         return trainingService.createTraining(trainingMapper.toEntity(trainingDto));
     }
 
-    @GetMapping("/finished_trainings")
+    @GetMapping("/finishedTrainings")
     public List<TrainingDto> getFinishedTrainings() {
         return trainingService.findAllFinishedTrainings().stream().map(trainingMapper::toDto).toList();
     }
 
-    @GetMapping("/finished_trainings/{date}")
+    @GetMapping("/finishedTrainings/afterDate/{date}")
     public List<TrainingDto> getFinishedTrainingsBefore(@PathVariable LocalDate date) {
         return trainingService.findAllFinishedTrainingsBefore(date).stream().map(trainingMapper::toDto).toList();
     }
 
-    @GetMapping("/{activity}")
+    @GetMapping("/byActivity/{activity}")
     public List<TrainingDto> getTrainingsByActivity(@PathVariable ActivityType activity) {
         return trainingService.findALlTrainingsByActivity(activity).stream().map(trainingMapper::toDto).toList();
     }
