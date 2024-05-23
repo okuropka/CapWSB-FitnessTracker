@@ -14,7 +14,7 @@ interface TrainingRepository extends JpaRepository<Training, Long> {
      * Query searching all trainings for given user ID
      *
      * @param userID ID of a user, whom trainings are to be searched
-     * @return {@link List} containing found trainings or {@link List#empty()} if none matched
+     * @return {@link List} containing found trainings
      */
     @Query("select training from Training training where training.user.id = :userID")
     List<Training> findAllTrainingsByUserID(@Param("userID") long userID);
@@ -23,7 +23,7 @@ interface TrainingRepository extends JpaRepository<Training, Long> {
      * Query searching all finished trainings
      *
      * @param today present date
-     * @return {@link List} containing found trainings or {@link List#empty()} if none matched
+     * @return {@link List} containing found trainings
      */
     @Query("select training from Training training where training.endTime < :today")
     List<Training> findAllFinishedTrainings(@Param("today") LocalDate today);
@@ -32,7 +32,7 @@ interface TrainingRepository extends JpaRepository<Training, Long> {
      * Query searching all finished trainings before given date
      *
      * @param date given date
-     * @return {@link List} containing found trainings or {@link List#empty()} if none matched
+     * @return {@link List} containing found trainings
      */
     @Query("select training from Training training where training.endTime < :date")
     List<Training> findAllFinishedTrainingsBefore(@Param("date") LocalDate date);
@@ -41,7 +41,7 @@ interface TrainingRepository extends JpaRepository<Training, Long> {
      * Query searching all trainings by activity type
      *
      * @param activityType Type of activity
-     * @return {@link List} containing found trainings or {@link List#empty()} if none matched
+     * @return {@link List} containing found trainings
      */
     @Query("select training from Training training where training.activityType = :activityType")
     List<Training> findAllTrainingsByActivity(@Param("activityType") ActivityType activityType);

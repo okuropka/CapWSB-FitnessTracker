@@ -24,13 +24,14 @@ class UserController {
     //@GetMapping
     public List<UserDto> getAllUsers() {
         return userService.findAllUsers()
-                          .stream()
-                          .map(userMapper::toDto)
-                          .toList();
+                .stream()
+                .map(userMapper::toDto)
+                .toList();
     }
+
     @GetMapping
     public List<SimpleUserDto> getAllSimpleUsers() {
-        return userService.findAllSimpleUsers()
+        return userService.findAllUsers()
                 .stream()
                 .map(simpleUserMapper::toDto)
                 .toList();
@@ -38,8 +39,11 @@ class UserController {
 
     @GetMapping("/user/{id}")
     public UserDto getUserById(@PathVariable("id") Long id) {
-        if (userService.getUser(id).isPresent()) { return userMapper.toDto(userService.getUser(id).get()); }
-        else { throw new UserNotFoundException(id); }
+        if (userService.getUser(id).isPresent()) {
+            return userMapper.toDto(userService.getUser(id).get());
+        } else {
+            throw new UserNotFoundException(id);
+        }
     }
 
     @PostMapping
@@ -51,8 +55,11 @@ class UserController {
 
     @DeleteMapping("/delete/{id}")
     public void deleteUser(@PathVariable("id") Long id) {
-        if (userService.getUser(id).isPresent()) { userService.deleteUser(userService.getUser(id).get()); }
-        else { throw new UserNotFoundException(id); }
+        if (userService.getUser(id).isPresent()) {
+            userService.deleteUser(userService.getUser(id).get());
+        } else {
+            throw new UserNotFoundException(id);
+        }
     }
 
     @GetMapping("/search/email")
@@ -65,36 +72,16 @@ class UserController {
         return userService.findUsersOlderThan(age).stream().map(userMapper::toDto).toList();
     }
 
-    /*
-    @PatchMapping("/user/{id}")
-    public ResponseEntity<UserDto> updateUser(
-            @PathVariable Long id,
-            @RequestParam String fieldName,
-            @RequestParam String fieldValue
-    ) {
+    @PatchMapping("/update/user/byEmail/{id}")
+    public void updateUser(@PathVariable Long id, @RequestParam String email ) {
         Optional<User> optionalUser = userService.getUser(id);
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
-
-            switch (fieldName) {
-                case "firstName":
-                    user.setFirstName(fieldValue);
-                    break;
-                case "lastName":
-                    user.setLastName(fieldValue);
-                    break;
-                case "email":
-                    user.setEmail(fieldValue);
-                    break;
-                default:
-                    return ResponseEntity.badRequest().build();
-            }
-
-            User updatedUser = userService.updateUser(user);
-            return ResponseEntity.ok().body(userMapper.toDto(updatedUser));
-        } else {
-            return ResponseEntity.notFound().build();
+            user.setEmail(email);
+            userService.updateUser(user);
         }
+        else { throw new UserNotFoundException(id); }
     }
-     */
+
+
 }

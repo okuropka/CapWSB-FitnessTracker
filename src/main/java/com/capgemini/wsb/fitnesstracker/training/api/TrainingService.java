@@ -26,4 +26,6 @@ public interface TrainingService {
     List<Training> findAllFinishedTrainingsBefore(LocalDate date);
 
     List<Training> findALlTrainingsByActivity(ActivityType activityType);
+
+    Training updateTraining(Training training);
 }

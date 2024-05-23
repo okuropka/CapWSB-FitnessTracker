@@ -10,12 +10,11 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Date;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
+//@Slf4j
 class TrainingServiceImpl implements TrainingService, TrainingProvider {
 
 
@@ -39,7 +38,7 @@ class TrainingServiceImpl implements TrainingService, TrainingProvider {
 
     @Override
     public Training createTraining(Training training){
-        log.info("Creating Training {}", training);
+        //log.info("Creating Training {}", training);
         if (training.getId() != null) {
             throw new IllegalArgumentException("Training has already DB ID, update is not permitted!");
         }
@@ -60,5 +59,11 @@ class TrainingServiceImpl implements TrainingService, TrainingProvider {
     @Override
     public List<Training> findALlTrainingsByActivity(ActivityType activityType){
         return trainingRepository.findAllTrainingsByActivity(activityType);
+    }
+
+    @Override
+    public Training updateTraining(Training training){
+        //log.info("Updating Training {}", training);
+        return trainingRepository.save(training);
     }
 }
