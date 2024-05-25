@@ -1,10 +1,8 @@
 package com.capgemini.wsb.fitnesstracker.training.api;
 
-import com.capgemini.wsb.fitnesstracker.training.api.Training;
-import com.capgemini.wsb.fitnesstracker.training.internal.ActivityType;
-import com.capgemini.wsb.fitnesstracker.user.api.User;
 
-import java.time.LocalDate;
+import com.capgemini.wsb.fitnesstracker.training.internal.ActivityType;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +21,7 @@ public interface TrainingService {
 
     List<Training> findAllFinishedTrainings();
 
-    List<Training> findAllFinishedTrainingsBefore(LocalDate date);
+    List<Training> findAllFinishedTrainingsBefore(Date date);
 
     List<Training> findALlTrainingsByActivity(ActivityType activityType);
 

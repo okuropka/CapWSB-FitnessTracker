@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,7 +52,7 @@ class TrainingController {
 
     // TODO: fix error "Could not convert 'java.time.LocalDate' to 'java.sql.Timestamp' using 'org.hibernate.type.descriptor.java.JdbcTimestampJavaType' to wrap"
     @GetMapping("/finishedTrainings/beforeDate/{date}")      // http://localhost:8080/v1/trainings/finishedTrainings/beforeDate/2024-01-13
-    public List<TrainingDto> getFinishedTrainingsBefore(@PathVariable LocalDate date) {
+    public List<TrainingDto> getFinishedTrainingsBefore(@PathVariable Date date) {
         return trainingService.findAllFinishedTrainingsBefore(date).stream().map(trainingMapper::toDto).toList();
     }
 

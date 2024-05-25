@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,7 +51,7 @@ class TrainingServiceImpl implements TrainingService, TrainingProvider {
     }
 
     @Override
-    public List<Training> findAllFinishedTrainingsBefore(LocalDate date){
+    public List<Training> findAllFinishedTrainingsBefore(Date date){
         //return trainingRepository.findAllFinishedTrainings(date);
         System.out.println(date);
         return trainingRepository.findAllFinishedTrainingsBefore(date);

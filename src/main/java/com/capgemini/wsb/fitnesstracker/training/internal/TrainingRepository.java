@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 interface TrainingRepository extends JpaRepository<Training, Long> {
@@ -35,7 +36,7 @@ interface TrainingRepository extends JpaRepository<Training, Long> {
      * @return {@link List} containing found trainings
      */
     @Query("select training from Training training where training.endTime < :date")
-    List<Training> findAllFinishedTrainingsBefore(@Param("date") LocalDate date);
+    List<Training> findAllFinishedTrainingsBefore(@Param("date") Date date);
 
     /**
      * Query searching all trainings by activity type
