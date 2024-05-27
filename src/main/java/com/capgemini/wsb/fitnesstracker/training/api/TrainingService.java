@@ -26,4 +26,6 @@ public interface TrainingService {
     List<Training> findALlTrainingsByActivity(ActivityType activityType);
 
     Training updateTraining(Training training);
+
+    //void deleteAllTrainingsByUser(Long userId);
 }

@@ -2,6 +2,7 @@ package com.capgemini.wsb.fitnesstracker.user.internal;
 
 import com.capgemini.wsb.fitnesstracker.user.api.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -35,5 +36,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("select user from User user where user.birthdate < :earliestBirthdate")
     List<User> findUsersOlderThan(@Param("earliestBirthdate") LocalDate earliestBirthdate);
+
+    @Modifying
+    @Query("delete from Training t where t.user.id = :userId")
+    void deleteAllTrainingsByUserId(@Param("userId") Long userId);
 
 }

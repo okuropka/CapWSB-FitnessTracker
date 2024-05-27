@@ -25,5 +25,4 @@ public class ReportGenerator {
         log.info("Report generated");
     }
 
-
 }

@@ -30,9 +30,10 @@ class UserServiceImpl implements UserService, UserProvider {
     }
 
     @Override
-    public void deleteUser(final User user) {
-        log.info("Deleting User {}", user);
-        userRepository.delete(user);
+    public void deleteUser(final Long id) {
+        log.info("Deleting User {}", userRepository.findById(id));
+        userRepository.deleteAllTrainingsByUserId(id);
+        userRepository.findById(id).ifPresent(userRepository::delete);
     }
 
     @Override

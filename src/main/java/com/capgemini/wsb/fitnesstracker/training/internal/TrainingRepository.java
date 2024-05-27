@@ -47,4 +47,6 @@ interface TrainingRepository extends JpaRepository<Training, Long> {
     @Query("select training from Training training where training.activityType = :activity")
     List<Training> findAllTrainingsByActivity(@Param("activity") ActivityType activity);
 
+
+
 }

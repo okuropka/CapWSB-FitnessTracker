@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "8498f703-affb-4f49-99ec-49d988e91fe5",
+		"name": "Lab1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34707512"
+	},
+	"item": [
+		{
+			"name": "Users_names&surnames",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users_getUserByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/users/getBy/id/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"getBy",
+						"id",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users_deleteUserByID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/users/delete/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"delete",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users_getUsersByEmailFragment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/users/search/email?emailFragment=ill",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"search",
+						"email"
+					],
+					"query": [
+						{
+							"key": "emailFragment",
+							"value": "ill"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users_getUsersOlderThan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/users/search/olderThan?age=48",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"search",
+						"olderThan"
+					],
+					"query": [
+						{
+							"key": "age",
+							"value": "48"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users_addNewUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Id\" : null,\r\n    \"firstName\" : \"imie\",\r\n    \"lastName\" : \"nazwisko\",\r\n    \"birthdate\" : \"1999-09-09\",\r\n    \"email\" : \"nowy.mail@poczta.ua\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/users/addUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"addUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users_updateUserByEmail",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/users/update/byEmail/3?email=odavis@domain2.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"update",
+						"byEmail",
+						"3"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "odavis@domain2.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

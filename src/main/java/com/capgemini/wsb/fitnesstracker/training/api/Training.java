@@ -4,8 +4,12 @@ import com.capgemini.wsb.fitnesstracker.training.internal.ActivityType;
 import com.capgemini.wsb.fitnesstracker.user.api.User;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import java.util.Date;
+
+import static org.hibernate.annotations.CascadeType.MERGE;
+
 @Entity
 @Table(name = "trainings")
 @Getter
@@ -18,7 +22,8 @@ public class Training {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @Cascade(MERGE)
     @JoinColumn(name = "user_id")
     private User user;
 

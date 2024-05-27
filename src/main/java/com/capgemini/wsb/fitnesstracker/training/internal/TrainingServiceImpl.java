@@ -26,6 +26,9 @@ class TrainingServiceImpl implements TrainingService, TrainingProvider {
         return trainingRepository.findById(trainingId);
     }
 
+    //@Override
+    //public void deleteAllTrainingsByUser(final Long id) { trainingRepository.deleteAllTrainingsByUserId(id); }
+
     @Override
     public List<Training> getAllTrainings() { return trainingRepository.findAll(); }
     // dlaczego korzystając z trainingProvider wychodzi błąd cyklicznej zależności...? (TrainingController <--> TrainingServiceImpl)
