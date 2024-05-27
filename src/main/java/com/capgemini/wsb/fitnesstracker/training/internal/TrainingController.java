@@ -37,9 +37,9 @@ class TrainingController {
     // objaśnienie, jak wysłać JSON w Postmanie
     // https://dev.to/serenepine/how-to-send-json-data-in-postman-90a
 
-    // '{null, "imie", "nazwisko", "1999-09-09", "nowy.mail@poczta.ua}' "localhost:8080/v1/users/addUser"
+    // '{null, "imie", "nazwisko", "1999-09-09", "nowy.mail@poczta.ua}' "localhost:8080/v1/trainings/addTraining"
     // TODO: post request
-    @PostMapping
+    @PostMapping("/addTraining")
     public Training addTraining(@RequestBody TrainingDto trainingDto) {
         return trainingService.createTraining(trainingMapper.toEntity(trainingDto));
     }
